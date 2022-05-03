@@ -1,0 +1,14 @@
+.container {
+    box-shadow: none !important;
+    border-radius: 0px;
+}
+
+.large {
+    width: 60vw;
+}
+
+.small {
+    margin-top: 50px;
+    width: 40vw;
+}
+
