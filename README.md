@@ -6,18 +6,18 @@ Author: Mohamed Habib Jaouadi @EY Tunisia
 
 ## TODO!
 
-[+] Login/Home Page
-[+] Dashboard Page
-[+] Workspace Page
-[+] App Router
-[] Utils
-[] Utils > Auth
+[+] Login/Home Page  
+[+] Dashboard Page  
+[+] Workspace Page  
+[+] App Router  
+[] Utils  
+[] Utils > Auth  
 [] Auth accross App
 
 ---
 
 ## Additional TODOs
 
-[] Delete component
-[] Proptypes
+[] Delete component  
+[] Proptypes  
 [] Component refactoring
