@@ -1,9 +1,11 @@
+import { useState } from "react";
 import EntryListing from "./EntryListing";
 
 const WorkspaceList = () => {
   const styles = {
     width: "100%",
   };
+
   return (
     <>
       <table className="bp4-html-table bp4-interactive" style={styles}>

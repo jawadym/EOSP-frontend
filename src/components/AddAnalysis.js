@@ -19,6 +19,7 @@ const AddAnalysis = () => {
   return (
     <>
       <AnchorButton
+     
         icon="add"
         text={"New Analysis"}
         size="regular"
@@ -33,7 +34,7 @@ const AddAnalysis = () => {
         className={Classes.OVERLAY_SCROLL_CONTAINER}
         Align={Alignment.CENTER}
         isOpen={isOpen}
-        onClose={(e) => setIsOpen(false)}
+        onClose={() => setIsOpen(false)}
       >
         <div
           style={{ width: "50vw", marginTop: "10vh", marginLeft: "25vw" }}
@@ -54,7 +55,7 @@ const AddAnalysis = () => {
               <InputGroup id="a-name" placeholder="Malware XX" small={true} />
             </div>
           </FormGroup>
-          <FormGroup
+          {/* <FormGroup
             label={"Tags"}
             labelFor="un-input"
             style={{ width: "20vw" }}
@@ -66,7 +67,7 @@ const AddAnalysis = () => {
                 small={true}
               />
             </div>
-          </FormGroup>
+          </FormGroup> */}
           {isTypeChecked ? (
             <FormGroup
               label={"uplaod artifact"}
@@ -101,7 +102,7 @@ const AddAnalysis = () => {
           />
           <div className={Classes.DIALOG_FOOTER_ACTIONS}>
             <Button intent={Intent.PRIMARY}>New</Button>
-            <Button intent={Intent.DANGER} onClick={(e) => setIsOpen(false)}>
+            <Button intent={Intent.DANGER} onClick={() => setIsOpen(false)}>
               Close
             </Button>
           </div>

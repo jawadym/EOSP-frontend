@@ -14,7 +14,7 @@ const NavbarDesktop = ({loggedIn}) => {
     return (
     <Navbar>
         <NavbarGroup align={Alignment.LEFT}>
-            <NavbarHeading><Link to="/" style={{ textDecoration: 'none' }}>EY Project</Link></NavbarHeading>
+            <NavbarHeading><Link to="/" style={{ textDecoration: 'none'}}>EY Project</Link></NavbarHeading>
         </NavbarGroup>
         <NavbarGroup align={Alignment.RIGHT}>
             {loggedIn ? <Button className={Classes.MINIMAL} icon="log-out" text="Sign out" />: <Button className={Classes.MINIMAL} icon="log-in" text="Sign in" />}

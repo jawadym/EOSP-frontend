@@ -7,11 +7,12 @@ const EntryListing = ({ name, status, date, viewable, id }) => {
   const handleEntryClick = (e) => {
     console.log("running");
     e.preventDefault();
-    navigate(`./${id}`);
+    
   };
 
   const handleInspectEvent = (e) => {
     e.stopPropagation();
+    navigate(`./${id}`);
     console.log("want to inspect " + id);
   };
   const handleDeleteEvent = (e) => {

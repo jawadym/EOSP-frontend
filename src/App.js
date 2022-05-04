@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavbarDesktop from "./components/NavbarDesktop";
 import Homepage from "./pages/Homepage";
 import Dashboard from "./pages/Dashboard";
-import Workspace from "./pages/Workspace";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
