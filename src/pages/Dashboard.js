@@ -7,9 +7,11 @@ import { Tree } from "@blueprintjs/core";
 import { Classes } from "@blueprintjs/core";
 import SideMenuWrapper from "../components/SideMenuWrapper";
 import AddAnalysis from "../components/AddAnalysis";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Workspace from "./Workspace";
-const Dashboard = () => {
+
+const Dashboard = ({ loggedIn }) => {
+  document.title = "Dashboard | Ey Project";
   const menuContext = [
     {
       id: 5,
@@ -21,16 +23,6 @@ const Dashboard = () => {
           icon: "document",
           label: "Malware 1",
         },
-        {
-          id: 1,
-          icon: "document",
-          label: "Malware 2",
-        },
-        {
-          id: 2,
-          icon: "document",
-          label: "Malware 3",
-        },
       ],
     },
   ];
@@ -40,6 +32,7 @@ const Dashboard = () => {
   };
   return (
     <>
+      {!loggedIn && <Navigate to="/" />}
       <GridContainer>
         <GridItem isSideMenu={true}>
           <SideMenuWrapper>
@@ -81,7 +74,7 @@ const Dashboard = () => {
           <Route
             path="/:ws_id"
             element={
-              <GridItem>
+              <GridItem isMenu={true}>
                 <Workspace />
               </GridItem>
             }

@@ -21,7 +21,7 @@ const GridItem = ({ children, isLeading, isSideMenu, isMenu }) => {
     styles = {
       ...styles,
       gridColumnStart: 2,
-      gridColumnEnd: 5,
+      gridColumnEnd: 6,
     };
   }
 

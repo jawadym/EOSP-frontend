@@ -1,10 +1,12 @@
 import GridContainer from "../components/GridContainer";
 import GridItem from "../components/GridItem";
 import Leading from "../components/Leading";
+import { Navigate } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
-const Homepage = ({ setLoggedIn }) => {
+const Homepage = ({ setLoggedIn, loggedIn }) => {
   return (
     <>
+      {loggedIn && <Navigate to="/dashboard" />}
       <GridContainer>
         <GridItem>
           <Leading
@@ -16,7 +18,6 @@ const Homepage = ({ setLoggedIn }) => {
             ]}
           />
         </GridItem>
-        <GridItem></GridItem>
       </GridContainer>
       <LoginForm setLoggedIn={setLoggedIn} />
     </>

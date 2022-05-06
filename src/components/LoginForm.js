@@ -6,40 +6,58 @@ import {
   Callout,
   Divider,
 } from "@blueprintjs/core";
-import { useState, useLayoutEffect, useRef } from "react";
-import Auth from "../utils/auth";
+import { useState } from "react";
 import "./LoginForm.css";
 import Container from "./Container";
 const LoginForm = ({ setLoggedIn }) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [invalidStatus, setInvalidStatus] = useState(false);
+  const [invalidMessage, setInvalidMessage] = useState("");
   const [sw, setSwitch] = useState(false);
 
-  const [status, setStatus] = useState("init");
-  const [rightCreds, setRightCreds] = useState(false);
-  const firstUpdate = useRef(true);
-  useLayoutEffect(() => {
-    if (firstUpdate.current) {
-      firstUpdate.current = false;
-      return;
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const response = await fetch("http://localhost:3000/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+      const res = await response;
+      const status = res.status;
+      const parsedJSON = await res.json();
+
+      if (Math.trunc(status / 100) == 4) {
+        setInvalidStatus(true);
+        setInvalidMessage(parsedJSON.message);
+        setLoading(false);
+      } else {
+        localStorage.setItem("token", parsedJSON.token);
+        setLoading(false);
+        setLoggedIn(true);
+      }
+    } catch (e) {
+      console.log(e);
     }
-    const auth = new Auth(username, password);
-    if (status === "pending") {
-      setRightCreds(auth.LogInAction());
-      setStatus("done");
-      setLoggedIn(auth.LogInAction());
-    }
-  }, [status]);
+  };
 
   return (
     <Container>
-      <FormGroup label={"Username"} labelFor="un-input">
+      <FormGroup label={"Email"} labelFor="un-input">
         <InputGroup
-          value={username}
+          value={email}
           id="un-input"
-          placeholder="John D"
+          placeholder="John@ey.com"
           small={true}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </FormGroup>
       <FormGroup label={"Password"} labelFor="un-input">
@@ -63,17 +81,10 @@ const LoginForm = ({ setLoggedIn }) => {
             Your password will be saved for future login.
           </Callout>
         )}
-        {!rightCreds && !firstUpdate.current && (
-          <Callout intent="warning">Wrong credentials</Callout>
-        )}
+        {invalidStatus && <Callout intent="warning">{invalidMessage}</Callout>}
       </FormGroup>
       <Divider />
-      <AnchorButton
-        text="Sign in"
-        onClick={() => {
-          setStatus("pending");
-        }}
-      />
+      <AnchorButton loading={loading} text="Sign in" onClick={handleSignIn} />
     </Container>
   );
 };

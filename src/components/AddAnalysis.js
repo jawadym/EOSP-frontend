@@ -10,16 +10,17 @@ import {
   InputGroup,
   FileInput,
   Switch,
+  Colors,
 } from "@blueprintjs/core";
 import { useState } from "react";
 const AddAnalysis = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isTypeChecked, setIsTypeChecked] = useState(true);
-
+  const [router, setRouter] = useState(true);
   return (
     <>
       <AnchorButton
-     
+        style={{ color: Colors.BLACK, backgroundColor: Colors.GOLD4 }}
         icon="add"
         text={"New Analysis"}
         size="regular"
@@ -52,25 +53,13 @@ const AddAnalysis = () => {
             style={{ width: "20vw" }}
           >
             <div>
-              <InputGroup id="a-name" placeholder="Malware XX" small={true} />
+              <InputGroup id="a-name" placeholder="Malware name" />
             </div>
           </FormGroup>
-          {/* <FormGroup
-            label={"Tags"}
-            labelFor="un-input"
-            style={{ width: "20vw" }}
-          >
-            <div>
-              <InputGroup
-                id="a-name"
-                placeholder="i.e ransomeware, botnet..."
-                small={true}
-              />
-            </div>
-          </FormGroup> */}
+
           {isTypeChecked ? (
             <FormGroup
-              label={"uplaod artifact"}
+              label={"Uplaod Artifact"}
               labelFor="un-input"
               style={{ width: "20vw" }}
             >
@@ -100,8 +89,16 @@ const AddAnalysis = () => {
             checked={isTypeChecked}
             onChange={() => setIsTypeChecked(!isTypeChecked)}
           />
+          <Switch
+            labelElement={"Router"}
+            innerLabelChecked="None"
+            innerLabel="Internet"
+            checked={!router}
+            onChange={() => setRouter(!router)}
+          />
+
           <div className={Classes.DIALOG_FOOTER_ACTIONS}>
-            <Button intent={Intent.PRIMARY}>New</Button>
+            <Button intent={Intent.PRIMARY}>Start</Button>
             <Button intent={Intent.DANGER} onClick={() => setIsOpen(false)}>
               Close
             </Button>

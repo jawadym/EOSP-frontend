@@ -1,26 +1,39 @@
 import {
   H3,
-  H5,
   Breadcrumb,
   Breadcrumbs,
+  Divider,
+  H6,
+  Colors,
 } from "@blueprintjs/core";
 
 import "./Leading.css";
-const Leading = ({ heading, description, BREADCRUMBS }) => {
+const Leading = ({
+  heading,
+  description,
+  BREADCRUMBS,
+  isNotBreadcrumbs,
+  withDivider,
+  children,
+}) => {
   const renderCurrentBreadcrumb = ({ text, ...restProps }) => {
     return <Breadcrumb {...restProps}>{text}</Breadcrumb>;
   };
   return (
-    <>
+    <div style={{ marginBottom: "20px" }}>
       <H3>{heading}</H3>
-      <H5>
-        <a href="#">{description}</a>
-      </H5>
-      <Breadcrumbs
-        currentBreadcrumbRenderer={renderCurrentBreadcrumb}
-        items={BREADCRUMBS}
-      />
-    </>
+      <H6 style={{ color: Colors.GOLD4, marginBottom: "25px" }}>
+        {description}
+      </H6>
+      {!isNotBreadcrumbs && (
+        <Breadcrumbs
+          currentBreadcrumbRenderer={renderCurrentBreadcrumb}
+          items={BREADCRUMBS}
+        />
+      )}
+      {children}
+      {withDivider && <Divider />}
+    </div>
   );
 };
 

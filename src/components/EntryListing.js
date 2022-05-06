@@ -7,7 +7,6 @@ const EntryListing = ({ name, status, date, viewable, id }) => {
   const handleEntryClick = (e) => {
     console.log("running");
     e.preventDefault();
-    
   };
 
   const handleInspectEvent = (e) => {

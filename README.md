@@ -10,9 +10,10 @@ Author: Mohamed Habib Jaouadi @EY Tunisia
 [+] Dashboard Page  
 [+] Workspace Page  
 [+] App Router  
-[] Utils  
-[] Utils > Auth  
-[] Auth accross App
+[+] Utils  
+[+] Utils > Auth  
+[+] Auth accross App
+[] Fetching data from API
 
 ---
 
